@@ -19,12 +19,12 @@ services:
     image: wordpress:6.1.1
     restart: always
     ports:
-      - "8000:80"
+      - "8080:80"
     environment:
-      WORDPRESS_DB_HOST: 127.0.0.1:80
+      WORDPRESS_DB_HOST: 127.0.0.1
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: tr@v3lb3t@
-      WORDPRESS_DB_NAME: my_wp_database
+      WORDPRESS_DB_NAME: travelbetablog
     volumes:
       ["./:/var/www/html"]
 volumes:
