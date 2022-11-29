@@ -5,10 +5,10 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: my_password_1234789
-      MYSQL_DATABASE: my_wp_database
-      MYSQL_USER: my_wp_user
-      MYSQL_PASSWORD: my_wp_user_password
+      MYSQL_ROOT_PASSWORD: Kolakadri1
+      MYSQL_DATABASE: travelbetablog
+      MYSQL_USER: travelbeta_blog
+      MYSQL_PASSWORD:tr@v3lb3t@
     volumes:
       - mysql:/var/lib/mysql
 
@@ -21,9 +21,9 @@ services:
     ports:
       - "8000:80"
     environment:
-      WORDPRESS_DB_HOST: my_database:3306
-      WORDPRESS_DB_USER: my_wp_user
-      WORDPRESS_DB_PASSWORD: my_wp_user_password
+      WORDPRESS_DB_HOST: 127.0.0.1:80
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: tr@v3lb3t@
       WORDPRESS_DB_NAME: my_wp_database
     volumes:
       ["./:/var/www/html"]
