@@ -15,8 +15,8 @@ services:
   #WordPress image based on Apache
   wordpress:
     depends_on:
-      - my_database
-    image: wordpress:latest
+      - travelbetablog
+    image: wordpress:6.1.1
     restart: always
     ports:
       - "8000:80"
