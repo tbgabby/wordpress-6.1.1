@@ -1,31 +1,17 @@
-version: "3"
-services:
-  #MySQL Database image
-  my_database:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: Kolakadri1
-      MYSQL_DATABASE: travelbetablog
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: tr@v3lb3t@
-    volumes:
-      - mysql:/var/lib/mysql
+version: '2'
 
-  #WordPress image based on Apache
-  wordpress:
-    depends_on:
-      - travelbetablog
-    image: wordpress:6.1.1
-    restart: always
-    ports:
-      - "8080:80"
-    environment:
-      WORDPRESS_DB_HOST: 127.0.0.1
-      WORDPRESS_DB_USER: travelbeta_blog
-      WORDPRESS_DB_PASSWORD: tr@v3lb3t@
-      WORDPRESS_DB_NAME: travelbetablog
+services:
+  php:
+    build: ./docker/php
     volumes:
-      ["./:/var/www/html"]
-volumes:
-  mysql: {}
+      - ./:/var/www/html
+      - /var/log/apache2/blog:/var/log/apache2/
+    ports:
+      - '8000:80'
+    environment:
+      - VIRTUAL_HOST=127.0.0.1
+    depends_on:
+      - db
+
+  db:
+    build: ./docker/mysql
